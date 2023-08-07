@@ -2,33 +2,41 @@ from typing import List
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        if not nums or len(nums) < 3:
-            return []
-        
-        ret = set()
-        for i in range(len(nums)):
-            m = []
-            target = -nums[i]
-            for j in range(len(nums)):
-                if i == j:
-                    continue
-                x = target - nums[j]
-                if x in m:
-                    lst = sorted([nums[i], nums[j], x])
-                    ret.add(tuple(lst))
-                m.append(nums[j])
+        ret = []
 
-        return [list(s) for s in ret]
+        nums.sort()
 
-lst = [
-    [-1,0,1,2,-1,-4], # [[-1,-1,2],[-1,0,1]]
-    [], # []
-    [0], # []
-]
-for l in lst:
-    print(Solution().threeSum(l))
+        for k in range(len(nums)):
+            a = nums[k]
+            if k > 0 and a == nums[k - 1]:
+                continue
+
+            l = k + 1
+            r = len(nums) - 1
+            while l < r:
+                b = nums[l]
+                c = nums[r]
+
+                total = a + b + c
+                if total > 0:
+                    r -= 1
+                elif total < 0:
+                    l += 1
+                else:
+                    ret.append([a,b,c])
+                    l += 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+        return ret
 
 
-# 0 = 1 + 2 + -3
-# -1 = 2 + -3
-# -3 = -3
+s = Solution()
+print(s.threeSum([-1,0,1,2,-1,-4]) == [[-1,-1,2],[-1,0,1]])
+print(s.threeSum([0,1,1]) == [])
+print(s.threeSum([0,0,0]) == [[0,0,0]])
+print(s.threeSum([0,0,0]) == [[0,0,0]])
+print(s.threeSum([0,0,0,0]) == [[0,0,0]])
+print(s.threeSum([1,-1,-1,0]) == [[-1,0,1]])
+
+# [-1, 0, 1, 2,-1,-4]
+# [-4,-1,-1, 0, 1, 2]
