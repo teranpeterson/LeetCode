@@ -1,3 +1,5 @@
+# SOLVED
+
 from collections import deque
 
 class Solution:

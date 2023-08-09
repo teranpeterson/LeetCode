@@ -1,4 +1,4 @@
-# INCOMPLETE
+# WORKING
 
 class Solution:
     def numRollsToTarget(self, d, f, target):

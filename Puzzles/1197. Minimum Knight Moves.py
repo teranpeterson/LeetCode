@@ -1,3 +1,5 @@
+# PREMIUM
+
 class Solution:
     def minKnightMoves(self, x: int, y: int) -> int:
         directions = [(2, 1), (1, 2), (-2, -1), (-1, -2), (2, -1), (1, -2), (-2, 1), (-1, 2)]

@@ -1,3 +1,5 @@
+# SOLVED
+
 import itertools
 
 class Solution:

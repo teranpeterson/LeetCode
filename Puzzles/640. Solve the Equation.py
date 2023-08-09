@@ -1,3 +1,5 @@
+# SOLVED
+
 class Solution:
     def solveEquation(self, equation: str) -> str:
         left, right = equation.split("=")

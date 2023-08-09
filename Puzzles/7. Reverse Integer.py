@@ -1,3 +1,5 @@
+# SOLVED
+
 class Solution:
     def reverse(self, x: int) -> int:
         max_int = 2**31 - 1

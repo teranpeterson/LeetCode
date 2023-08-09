@@ -1,3 +1,5 @@
+# WORKING
+
 class Solution:
     def rankTeams(self, votes):
         ret = ""

@@ -1,3 +1,5 @@
+# SOLVED
+
 class Solution:
     def camelMatch(self, queries, pattern):
         ret = []

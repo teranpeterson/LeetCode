@@ -1,4 +1,4 @@
-# DONE
+# SOLVED
 
 class Solution:
     def maxScoreSightseeingPair(self, A):

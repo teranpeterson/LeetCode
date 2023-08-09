@@ -1,3 +1,5 @@
+# WORKING
+
 class Solution:
     def findLongestWord(self, string, dct):
         if not string:

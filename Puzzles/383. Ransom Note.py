@@ -1,3 +1,5 @@
+# SOLVED
+
 from collections import defaultdict
 
 class Solution:

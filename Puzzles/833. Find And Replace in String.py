@@ -1,3 +1,5 @@
+# SOLVED
+
 class Solution:
     def findReplaceString(self, S, indexes, sources, targets):
         ret = ""
