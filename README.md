@@ -14,7 +14,7 @@ Not to brag but I won a t-shirt.
 ## Solved
 
 | # | Problem | Solution |
-|--:|---------|----------|
+| --: | --------- | ---------- |
 | 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | [`1. Two Sum.py`](Puzzles/1.%20Two%20Sum.py) |
 | 2 | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | [`2. Add Two Numbers.py`](Puzzles/2.%20Add%20Two%20Numbers.py) |
 | 3 | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | [`3. Longest Substring Without Repeating Characters.py`](Puzzles/3.%20Longest%20Substring%20Without%20Repeating%20Characters.py) |
@@ -126,7 +126,7 @@ Not to brag but I won a t-shirt.
 Solutions that pass most test cases but aren't fully optimized.
 
 | # | Problem | Solution |
-|--:|---------|----------|
+| --: | --------- | ---------- |
 | 3129 | [Find All Possible Stable Binary Arrays I](https://leetcode.com/problems/find-all-possible-stable-binary-arrays-i/) | [`3129. Find All Possible Stable Binary Arrays I.py`](Puzzles/3129.%20Find%20All%20Possible%20Stable%20Binary%20Arrays%20I.py) |
 
 ## In Progress
@@ -134,7 +134,7 @@ Solutions that pass most test cases but aren't fully optimized.
 Problems I've started but haven't finished yet.
 
 | # | Problem | Solution |
-|--:|---------|----------|
+| --: | --------- | ---------- |
 | 31 | [Next Permutation](https://leetcode.com/problems/next-permutation/) | [`31. Next Permutation.py`](Puzzles/31.%20Next%20Permutation.py) |
 | 91 | [Decode Ways](https://leetcode.com/problems/decode-ways/) | [`91. Decode Ways.py`](Puzzles/91.%20Decode%20Ways.py) |
 | 111 | [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/) | [`111. Minimum Depth of Binary Tree.py`](Puzzles/111.%20Minimum%20Depth%20of%20Binary%20Tree.py) |
