@@ -1,91 +1,66 @@
-# SOLVED
+# You are given two non-empty linked lists representing two non-negative
+# integers. The digits are stored in reverse order, and each of their
+# nodes contains a single digit. Add the two numbers and return the sum
+# as a linked list.
+
+# You may assume the two numbers do not contain any leading zero, except
+# the number 0 itself.
+
+from typing import Optional
 
 # Definition for singly-linked list.
 class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        self.print_node(l1)
-        self.print_node(l2)
-        res = None
-        start = None
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        n1 = l1
+        n2 = l2
+
+        head = ListNode(0)
+
+        curr = head
         carry = 0
-        while l1 is not None or l2 is not None:
-            n = 0
-            m = 0
-            if l1 is not None:
-                n = l1.val
-                l1 = l1.next
-            if l2 is not None:
-                m = l2.val
-                l2 = l2.next
-            x = n + m + carry
-            if carry == 1:
-                carry = 0
-            if x > 9:
-                carry = 1
-                x = x - 10
-            new = ListNode(x)
-            if res is None:
-                res = new
-                start = res
-            else:
-                res.next = new
-                res = res.next
+        while n1 or n2:
+            node = ListNode(0)
+            v1 = n1.val if n1 else 0
+            v2 = n2.val if n2 else 0
+            x = v1 + v2 + carry
+            node.val = x % 10
+            carry = x // 10
+            curr.next = node
+
+            curr = curr.next
+            n1 = n1.next if n1 else None
+            n2 = n2.next if n2 else None
+        
         if carry > 0:
-            last = ListNode(carry)
-            res.next = last
-        self.print_node(start)
-        return start
-    
-    def print_node(self, node):
-        temp = node
-        print(temp.val, end="")
-        temp = temp.next
-        while temp is not None:
-            print(" -> ", end="")
-            print(temp.val, end="")
-            temp = temp.next
-        print()
+            node = ListNode(1)
+            curr.next = node
+        
+        return head.next
 
-a1 = ListNode(9)
-a2 = ListNode(9)
-a3 = ListNode(9)
-a2.next = a3
-a1.next = a2
-
-b1 = ListNode(9)
-b2 = ListNode(9)
-b3 = ListNode(9)
-b2.next = b3
-b1.next = b2
-
-c1 = ListNode(2)
-c2 = ListNode(4)
-c1.next = c2
-
-d1 = ListNode(2)
-d2 = ListNode(4)
-d1.next = d2
 
 s = Solution()
-s.addTwoNumbers(a1, b1)
 
-# Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-# Output: 7 -> 0 -> 8
-# Explanation: 342 + 465 = 807.
+l1_a = ListNode(9)
+l1_b = ListNode(9, l1_a)
+l1_c = ListNode(9, l1_b)
+l1_d = ListNode(9, l1_c)
+l1_e = ListNode(9, l1_d)
+l1_f = ListNode(9, l1_e)
+l1_g = ListNode(9, l1_f)
 
-# Input: (2 -> 4) + (2 -> 4 -> 2)
-# Output: 4 -> 8 -> 2
-# Explanation: 42 + 242 = 284.
+l2_a = ListNode(9)
+l2_b = ListNode(9, l2_a)
+l2_c = ListNode(9, l2_b)
+l2_d = ListNode(9, l2_c)
 
-# Input: (2 -> 4 -> 3) + (2 -> 4)
-# Output: 4 -> 8 -> 3
-# Explanation: 342 + 42 = 384.
 
-# Input: (9 -> 9 -> 9) + (9 -> 9 -> 9)
-# Output: 8 -> 9 -> 9 -> 1
-# Explanation: 999 + 999 = 1998.
+
+x = s.addTwoNumbers(l1_g, l2_d)
+while x:
+    print(x.val)
+    x = x.next

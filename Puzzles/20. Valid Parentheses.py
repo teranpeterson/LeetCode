@@ -1,29 +1,22 @@
 # SOLVED
 
-class Solution:
-    def isValid(self, s: str) -> bool:
-        stack = []
+def valid(s: str) -> bool:
+    stack = []
 
-        for c in s:
-            if c == '[' or c == '{' or c == '(':
-                stack.append(c)
+    for c in s:
+        if c == "(" or c == "[" or c == "{":
+            stack.append(c)
+        else:
+            x = stack.pop(0)
+            if x == "(" and c == ")":
+                continue
+            elif x == "[" and c == "]":
+                continue
+            elif x == "{" and c == "}":
+                continue
             else:
-                if not stack:
-                    return False
-                t = stack.pop()
-                if t == '[' and c != ']':
-                    return False
-                if t == '{' and c != '}':
-                    return False
-                if t == '(' and c != ')':
-                    return False
-        if stack:
-            return False
-        return True
+                return False
+    return len(stack) == 0
 
-s = Solution()
-print(s.isValid("()") == True)
-print(s.isValid("()[]{}") == True)
-print(s.isValid("(]") == False)
-print(s.isValid("[") == False)
-print(s.isValid("]") == False)
+print(valid("()"))
+print(valid("()[]{}"))

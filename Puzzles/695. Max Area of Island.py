@@ -1,48 +1,29 @@
 # SOLVED
 
-class Solution:
-    def maxAreaOfIsland(self, g):
-        max = 0
-        self.grid = g
-        for i in range(len(self.grid)):
-            for j in range(len(self.grid[i])):
-                n = self.grid[i][j]
-                if n == 1:
-                    self.counter = 0
-                    self.checkNeighbors(i, j)
-                    if self.counter > max:
-                        max = self.counter
-        return max
+from typing import List
 
+def maxAreaOfIsland(grid: List[List[int]]) -> int:
+    def dfs(i: int, j: int) -> int:
+        if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[0]):
+            return 0
+        val = grid[i][j]
+        if val != 1:
+            return 0
+        grid[i][j] = 2
+        return 1 + dfs(i+1, j) + dfs(i-1, j) + dfs(i, j+1) + dfs(i, j-1)
     
-    def checkNeighbors(self, i, j):
-        if i < 0 or i > len(self.grid) - 1:
-            return
-        if j < 0 or j > len(self.grid[i]) - 1:
-            return
-        n = self.grid[i][j]
-        if n == 1:
-            self.grid[i][j] = 2
-            self.counter += 1
-            self.checkNeighbors(i-1, j)
-            self.checkNeighbors(i+1, j)
-            self.checkNeighbors(i, j-1)
-            self.checkNeighbors(i, j+1)
+    res = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            val = grid[i][j]
+            if val != 1:
+                continue
+            res = max(res, dfs(i, j))
+    return res
+          
 
-
-    
-
-
-ary =  [[0,0,1,0,0,0,0,1,0,0,0,0,0],
-        [0,0,0,0,0,0,0,1,1,1,0,0,0],
-        [0,1,1,0,1,0,0,0,0,0,0,0,0],
-        [0,1,0,0,1,1,0,0,1,0,1,0,0],
-        [0,1,0,0,1,1,0,0,1,0,0,0,0],
-        [0,0,0,0,0,0,0,1,0,1,0,0,0],
-        [0,0,0,0,0,0,0,1,1,1,0,0,0],
-        [0,0,0,0,0,0,0,1,1,0,0,0,0]]
-
-
-
-s = Solution()
-print(s.maxAreaOfIsland(ary))
+print(maxAreaOfIsland([
+[0,1,1,0,1],
+[1,0,1,0,1],
+[0,1,1,0,1],
+[0,1,0,0,1]])) # 6

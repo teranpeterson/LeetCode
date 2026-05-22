@@ -1,30 +1,25 @@
-# SOLVED
+
 
 from typing import List
 
-class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        n = len(matrix)
-        m = len(matrix[0])
-        i, j = 0, n * m - 1
+def search(matrix: List[List[int]], target: int) -> bool:
 
-        while i <= j:
-            k = i + (j - i) // 2
-            n = matrix[k // m][k % m]
 
-            if n > target:
-                j = k - 1
-            elif n < target:
-                i = k + 1
-            else:
-                return True
-        return False
 
-s = Solution()
-print(s.searchMatrix([[1,3,5,7],[10,11,16,20],[23,30,34,60]], 3))
 
-# 3 x 4
-# [[1,3,5,7],[10,11,16,20],[23,30,34,60]]
-#   0 1 2 3    4  5  6  7    8  9 10 11
-# 0 0 1 2 3  1 0  1  2  3  2 0  1  2  3
+    l, r = 0, len(matrix)*len(matrix[0])-1
+    for n in range(r):
+        print(matrix[n//len(matrix[0])][n%len(matrix[0])])
+    while l <= r:
+        x = l+(r-l)//2
+        r, c = x // len(matrix), x % len(matrix)
+        if matrix[r][c] == target:
+            return True
+        if matrix[r][c] > target:
+            r = x-1
+        if matrix[r][c] < target:
+            l = x+1
+    return False
 
+print(search([[1,2,4,8],[10,11,12,13],[14,20,30,40]], 10)) # true
+print(search([[1,2,4,8],[10,11,12,13],[14,20,30,40]], 15)) # false

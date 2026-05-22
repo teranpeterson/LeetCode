@@ -2,22 +2,18 @@
 
 from typing import List
 
-class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        i, j = 0, len(nums) - 1
-        while i <= j:
-            k = i + (j - i) // 2
-            n = nums[k]
-            if n > target:
-                j = k - 1
-            elif n < target:
-                i = k + 1
-            else:
-                return k
-        return -1
+def search(nums: List[int], target: int) -> int:
+    l, r = 0, len(nums)-1
+    while l <= r:
+        x = l+(r-l)//2
+        if nums[x] == target:
+            return x
+        if nums[x] > target:
+            r = x-1
+        if nums[x] < target:
+            l = x+1
+    return -1
 
-
-s = Solution()
-print(s.search([-1,0,3,5,9,12], 9) == 4)
-print(s.search([-1,0,3,5,9,12], 2) == -1)
-print(s.search([5], 5) == 0)
+print(search([-1,0,2,4,6,8], 4)) # 3
+print(search([-1,0,2,4,6,8], 3)) # -1
+print(search([2,5], 5)) # 1

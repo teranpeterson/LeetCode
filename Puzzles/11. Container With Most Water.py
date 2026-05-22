@@ -1,26 +1,21 @@
 # SOLVED
 
-class Solution:
-    def maxArea(self, height):
-        if not height or len(height) < 2:
-            return 0
-        ret = 0
-        start = 0
-        end = len(height)-1
-        while start != end:
-            vol = (end - start) * min(height[end], height[start])
-            if vol > ret:
-                ret = vol
-            if height[start] > height[end]:
-                end -= 1
-            else:
-                start += 1
-        return ret
+from typing import List
 
-pas = [
-    [1,8,6,2,5,4,8,3,7],        # 49
-]
+def mostWater(height: List[int]) -> int:
+    l, r = 0, len(height) - 1
 
-s = Solution()
-for p in pas:
-    print("Solution: " + str(s.maxArea(p)))
+    res = 0
+    while l < r:
+        curr = min(height[l], height[r]) * (r-l)
+        res = max(res, curr)
+        if height[l] < height[r]:
+            l += 1
+        elif height[l] > height[r]:
+            r -= 1
+        else:
+            l += 1
+    return res
+        
+
+print(mostWater([1,8,6,2,5,4,8,3,7])) # 49
